@@ -26,10 +26,24 @@ html {
   font-size: 62.5%;
   /* So 1 rem = 10px */
 }
+
 body {
   box-sizing: border-box;
   font-weight: 400;
   color: var(--color-dark);
   font-family: var(--font-sans-serif-montserrat);
   font-size: 1.6rem;
+}
+
+/* Setting parents height */
+html,
+body,
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+/* Making sure children takes up the whole space*/
+#root > .app {
+  flex: 1;
 }

@@ -1,5 +1,9 @@
 import React from 'react';
-
+import PortraitCard from './components/PortraitCard';
 export default function App() {
-  return <div>Hello, I am the bare bones react app.</div>;
+  return (
+    <div className='app'>
+      <PortraitCard />
+    </div>
+  );
 }
