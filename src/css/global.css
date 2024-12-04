@@ -29,7 +29,9 @@ html {
 body {
   box-sizing: border-box;
   font-weight: 400;
+  /*provisoire */ 
   color: var(--color-dark);
+  background-color: #000;
   font-family: var(--font-sans-serif-montserrat);
   font-size: 1.6rem;
 }
