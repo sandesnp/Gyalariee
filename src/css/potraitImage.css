@@ -24,16 +24,9 @@
   flex-wrap: wrap;
   gap: 2.5rem;
 }
-.portrait-card__artist-name {
-}
+
 .portrait-card__details {
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
-.portrait-card__object-name {
-}
-.portrait-card__tags {
-}
-.portrait-card__department {
 }
