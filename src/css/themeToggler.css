@@ -1,0 +1,23 @@
+.theme-toggler {
+    * {
+        cursor: pointer;
+    }
+
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    
+    input {
+        display: none;
+        &:not(checked) {
+            & ~ label::before {
+                content: 'light';
+            }
+        }
+        &:checked {
+            & ~ label::before {
+                content: 'dark';
+            }
+        }
+    }
+}
