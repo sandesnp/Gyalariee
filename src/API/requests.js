@@ -30,11 +30,11 @@ export const apiGetOne = async (id) => {
 };
 
 export const apiGetOneRandom = async () => {
-  //490,000 is the harded-coded total objects in the api. Randoms between 0 and 490,000.
-  const randomId = Math.floor(Math.random() * (490000 + 1));
+  //491,708 is the harded-coded total objects in the api. Randoms between 0 and 491,707.
+  const randomId = Math.floor(Math.random() * (491,708));
   const obj = await apiGetOne(randomId);
   // Recursion
-  if (!obj) {
+  if (!obj || obj?.primaryImageSmall === "") {
     return await apiGetOneRandom();
   }
   return obj;
