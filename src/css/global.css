@@ -13,6 +13,16 @@
   --color-gray-dark: #687980;
 }
 
+[data-theme='light'] {
+  --background-color: hsl(60, 15%, 90%);
+  --text-color: #151515;
+}
+
+[data-theme='dark'] {
+  --background-color: hsl(240, 75%, 5%);
+  --text-color: #f9f3f3;
+}
+
 *,
 *::before,
 *::after {
@@ -29,20 +39,23 @@ html {
 body {
   box-sizing: border-box;
   font-weight: 400;
-  color: var(--color-dark);
   font-family: var(--font-sans-serif-montserrat);
   font-size: 1.6rem;
 }
 
-/* Setting parents height */
 html,
 body,
 #root {
+  /* Making sure main container takes full screen height */
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-/* Making sure children takes up the whole space*/
 #root > .app {
   flex: 1;
+}
+
+#app {
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
