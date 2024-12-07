@@ -1,5 +1,20 @@
 import axios from "axios";
 
+// Search endpoint
+// https://collectionapi.metmuseum.org/public/collection/v1/search?
+//    q               : string
+//    isHighlight     : boolean
+//    title           : string
+//    tags            : boolean
+//    departmentId    : integer
+//    isOnView        : boolean
+//    artistOrCulture : boolean
+//    medium          : string | string
+//    hasImages       : boolean
+//    geoLocation     : string | string
+//    dateBegin       : signed integer
+//    dateEnd         : signed integer
+
 export const queryTheMetSearch = async (query="*", isHighlight=true) => {
   try {
     let axiosquery = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=${true}&isHighlight=${isHighlight}&q=${query}`;
