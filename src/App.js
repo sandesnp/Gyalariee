@@ -1,30 +1,24 @@
-import React , {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import ThemeToggler from './components/ThemeToggler';
-import ItemLandscape from './components/ItemLandscape';
+import LandscapeCard from './components/LandscapeCard';
+import { apiGetOneRandom } from './API/requests';
 
-import { queryTheMetRandomObject } from './API/themetAPI';
+const App = () => {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [theMetObject, setTheMetObject] = useState({});
+  useEffect(
+    () => async () => {
+      const randomObj = await apiGetOneRandom();
+      setTheMetObject(randomObj);
+    },
+    []
+  );
 
- const App = () => {
-
-  const [theMetObject, setTheMetObject] = useState(null);
-  useEffect(() => async () => {
-    let object;
-    do {
-      object = await queryTheMetRandomObject("*",true);
-      // console.log(await object);
-    } while (await object?.primaryImageSmall == "");
-    setTheMetObject(object);
-  }, []);
-
-  const [isDarkTheme, setIsDarkTheme] = useState(false)
-  const toggleTheme = () => setIsDarkTheme(!isDarkTheme);
-
-  return  (
-    <div id="App" data-theme={isDarkTheme ? "dark" : "light" }>
-      <ThemeToggler isChecked={isDarkTheme} handleChange={toggleTheme}/>
-      <ItemLandscape {...theMetObject} />
+  return (
+    <div id='app' className='app' data-theme={isDarkTheme ? 'dark' : 'light'}>
+      <ThemeToggler setIsDarkTheme={setIsDarkTheme} />
+      <LandscapeCard {...theMetObject} />
     </div>
   );
-}
+};
 export default App;
-

@@ -1,9 +1,7 @@
-import "../css/themeToggler.css";
-
-const ThemeToggler = ({handleChange, isChecked}) => {
+const ThemeToggler = ({setIsDarkTheme}) => {
     return (
         <div className="theme-toggler">
-            <input type="checkbox" id="theme-switch" onChange={handleChange} checked={isChecked}/>
+            <input type="checkbox" id="theme-switch" onChange={()=>setIsDarkTheme(prev=>!prev)}/>
             <label htmlFor="theme-switch"> theme</label>
         </div>
     );

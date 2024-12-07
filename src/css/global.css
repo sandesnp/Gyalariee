@@ -20,6 +20,12 @@
   --text-color: #f9f3f3;
 }
 
+[data-theme='light'] {
+  --background-color: hsl(60, 15%, 90%);
+  --text-color: #151515;
+}
+
+
 *,
 *::before,
 *::after {
@@ -30,9 +36,9 @@
 }
 
 html {
-  font-size: 62.5%;
-  /* So 1 rem = 10px */
+  font-size: 62.5%; /* So 1 rem = 10px */
 }
+
 body {
   box-sizing: border-box;
   font-weight: 400;
@@ -40,11 +46,19 @@ body {
   font-size: 1.6rem;
 }
 
-#App {
+html,
+body,
+#root {
+  /* Making sure main container takes full screen height */
+  height: 100%;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width:100%;
-  color: var(--text-color);
+}
+#root > .app {
+  flex: 1;
+}
+
+#app {
   background-color: var(--background-color);
+  color: var(--text-color);
 }
