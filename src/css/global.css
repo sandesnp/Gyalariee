@@ -11,12 +11,12 @@
   --font-serif-roboto: 'Roboto Mono', monospace;
   --font-sans-serif-montserrat: 'Montserrat Alternates', sans-serif;
   --color-gray-dark: #687980;
-  --background-color: hsl(60, 15%, 90%);
+  --background-color: hsl(60, 3%, 85%);
   --text-color: #151515;
 }
 
 [data-theme="dark"] {
-  --background-color: hsl(240, 75%, 5%);
+  --background-color: hsl(240, 3%, 10%);
   --text-color: #f9f3f3;
 }
 
@@ -43,8 +43,6 @@ body {
 #App {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  align-items: center;
   height: 100vh;
   width:100%;
   color: var(--text-color);
