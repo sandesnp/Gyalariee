@@ -6,13 +6,14 @@ import { apiGetOneRandom } from './API/requests';
 const App = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [theMetObject, setTheMetObject] = useState({});
-  useEffect(
-    () => async () => {
+
+  useEffect(() => {
+    const fetchTheMetObject = async () => {
       const randomObj = await apiGetOneRandom();
       setTheMetObject(randomObj);
-    },
-    []
-  );
+    };
+    fetchTheMetObject();
+  }, []);
 
   return (
     <div id='app' className='app' data-theme={isDarkTheme ? 'dark' : 'light'}>
