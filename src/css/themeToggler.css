@@ -1,23 +1,58 @@
 .theme-toggler {
-    * {
-        cursor: pointer;
-    }
-    
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    
-    input {
-        display: none;
-        &:not(checked) {
-            & ~ label::before {
-                content: 'light';
-            }
+  * {
+    cursor: pointer;
+  }
+
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  label {
+    display: flex;
+    input[type="checkbox"] {
+      appearance: none;
+      & + span {
+        position: relative;
+        display: flex;
+        align-items: center;
+        color: var(--primary-text-color);
+        margin: 0 1rem;
+        &::before {
+          display: inline;
+          content: "";
+          height: 1.6rem;
+          width: 3.6rem;
+          border-radius: 0.8rem;
+          background-color: var(--toggler-background);
+          transition: background-color 200ms ease-in-out;
         }
-        &:checked {
-            & ~ label::before {
-                content: 'dark';
-            }
+        &::after {
+          display: inline;
+          content: "";
+          height: 1.4rem;
+          width: 1.4rem;
+          border-radius: 50%;
+          background-color: var(--toggler-foreground);
+          position: absolute;
+          left: 0.4rem;
+          transform: translateX(100%);
+          transition: background-color 200ms ease-in-out,
+            transform 200ms ease-in-out;
         }
+      }
+      &:checked + span::after {
+        transform: translateX(0);
+      }
+      &:focus ~ span,
+      &:active ~ span {
+        border-radius: 0.8rem;
+        box-shadow: 0 0 6px 2px var(--toggler-focus);
+      }
+      &:checked:focus ~ span,
+      &:checked:active ~ span {
+        border-radius: 0.8rem;
+        box-shadow: 0 0 8px 4px var(--toggler-focus);
+      }
     }
+  }
 }

@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import ThemeToggler from './components/ThemeToggler';
 import LandscapeCard from './components/LandscapeCard';
 import { apiGetOneRandom } from './API/requests';
+import useLocalStorage from "use-local-storage";
 
 const App = () => {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const themePreference = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [isDarkTheme, setIsDarkTheme] = useLocalStorage("isDarkTheme",themePreference);
   const [theMetObject, setTheMetObject] = useState({});
 
   useEffect(() => {
@@ -17,7 +19,7 @@ const App = () => {
 
   return (
     <div id='app' className='app' data-theme={isDarkTheme ? 'dark' : 'light'}>
-      <ThemeToggler setIsDarkTheme={setIsDarkTheme} />
+      <ThemeToggler setIsDarkTheme={setIsDarkTheme} isDarkTheme={isDarkTheme} />
       <LandscapeCard {...theMetObject} />
     </div>
   );

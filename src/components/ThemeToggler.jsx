@@ -1,10 +1,19 @@
-const ThemeToggler = ({setIsDarkTheme}) => {
+const ThemeToggler = ({ setIsDarkTheme, isDarkTheme }) => {
     return (
-        <div className="theme-toggler">
-            <input type="checkbox" id="theme-switch" onChange={()=>setIsDarkTheme(prev=>!prev)}/>
-            <label htmlFor="theme-switch"> theme</label>
-        </div>
+      <div className="theme-toggler">
+        <label htmlFor="checkbox" >
+          <input
+            type="checkbox"
+            id="checkbox"
+            onChange={() => setIsDarkTheme((prev) => !prev)}
+            checked={isDarkTheme}
+          />
+          {isDarkTheme ? "Dark" : "Light"} Theme
+          <span></span>
+        </label>
+      </div>
     );
-}
-
-export default ThemeToggler;
+  };
+  
+  export default ThemeToggler;
+  

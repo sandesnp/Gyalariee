@@ -11,20 +11,22 @@
   --font-serif-roboto: 'Roboto Mono', monospace;
   --font-sans-serif-montserrat: 'Montserrat Alternates', sans-serif;
   --color-gray-dark: #687980;
-  --background-color: hsl(60, 3%, 85%);
-  --text-color: #151515;
-}
-
-[data-theme="dark"] {
-  --background-color: hsl(240, 3%, 10%);
-  --text-color: #f9f3f3;
-}
-
-[data-theme='light'] {
+  
+  /* light | dark theme variables */
   --background-color: hsl(60, 15%, 90%);
-  --text-color: #151515;
-}
+  --primary-text-color: #151515;
+  --toggler-focus: hsl(240, 75%, 50%);
+  --toggler-foreground: hsl(60, 75%, 75%);
+  --toggler-background: hsl(60, 75%, 45%);}
 
+/* "light" theme is set as default :root -> "dark" theme must be specified below */
+[data-theme="dark"] {
+  --background-color: hsl(240, 75%, 5%);
+  --primary-text-color: #f9f3f3;
+  --toggler-focus: hsl(60, 75%, 50%);
+  --toggler-foreground: hsl(240, 75%, 75%);
+  --toggler-background: hsl(240, 75%, 45%);
+}
 
 *,
 *::before,
@@ -60,5 +62,5 @@ body,
 
 #app {
   background-color: var(--background-color);
-  color: var(--text-color);
+  color: var(--primary-text-color);
 }
