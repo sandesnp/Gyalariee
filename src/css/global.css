@@ -1,6 +1,7 @@
+/* light template */
 :root {
-  --color-black: #000;
-  --color-white: #fff;
+  --color-black: black;
+  --color-white: white;  
   --color-dark: #151515;
   --color-light: #f9f3f3;
   --color-primary: #ca8a8b;
@@ -12,20 +13,21 @@
   --font-sans-serif-montserrat: 'Montserrat Alternates', sans-serif;
   --color-gray-dark: #687980;
   
-  /* light | dark theme variables */
   --background-color: hsl(60, 15%, 90%);
   --primary-text-color: #151515;
   --toggler-focus: hsl(240, 75%, 50%);
   --toggler-foreground: hsl(60, 75%, 75%);
   --toggler-background: hsl(60, 75%, 45%);}
 
-/* "light" theme is set as default :root -> "dark" theme must be specified below */
+/* dark" template */
 [data-theme="dark"] {
   --background-color: hsl(240, 75%, 5%);
   --primary-text-color: #f9f3f3;
   --toggler-focus: hsl(60, 75%, 50%);
   --toggler-foreground: hsl(240, 75%, 75%);
   --toggler-background: hsl(240, 75%, 45%);
+  --color-black: white;
+  --color-white: black;
 }
 
 *,
