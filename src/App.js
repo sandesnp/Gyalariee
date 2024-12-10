@@ -30,6 +30,7 @@ const App = () => {
   return (
     <div id="app" className="app" data-theme={isDarkTheme ? "dark" : "light"}>
       <ThemeToggler setIsDarkTheme={setIsDarkTheme} isDarkTheme={isDarkTheme} />
+      <SearchBar/>
       {[...theMetObjects].map((o) => (
         <LandscapeCard key={o.objectID} {...o} />
       ))}

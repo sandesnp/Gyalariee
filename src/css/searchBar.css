@@ -1,4 +1,5 @@
 .search-bar__container {
+  position : relative ; 
   background-color: var(--color-white);
   min-width: 60rem;
   min-height: 20rem;
@@ -74,4 +75,52 @@
   display: block;
   margin: auto;
   cursor: pointer;
+}
+
+
+
+
+/* addition for the dropdown menu that is togle inside the SearchBar */
+
+
+.dropdown-menu__container {
+  position: absolute;
+  bottom: 0rem ; 
+  left: 20rem; 
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-black);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  gap: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.dropdown-menu__column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; 
+}
+
+.dropdown-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; 
+  font-size: 1.4rem;
+  color: var(--color-black);
+  font-family: var(--font-serif-roboto);
+  cursor: pointer;
+}
+
+.dropdown-menu__checkbox {
+  width: 1.5rem;
+  height: 1.5rem;
+  accent-color: var(--color-black); 
+  cursor: pointer;
+}
+
+.dropdown-menu__item:hover {
+  color: var(--color-primary-lighter); 
+  font-weight: bold;
 }
