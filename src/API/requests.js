@@ -1,12 +1,13 @@
 import axios from 'axios';
 
-export const apiGetAll = async (query = '*', isHighlight = true) => {
+export const apiGetAll = async (query = '*', isHighlight = false, isOnView = false) => {
   try {
     const axiosquery = `https://collectionapi.metmuseum.org/public/collection/v1/search`;
     const response = await axios.get(axiosquery, {
       params: {
         hasImages: true,
         isHighlight,
+        isOnView, 
         q: query,
       },
     });
@@ -39,3 +40,5 @@ export const apiGetOneRandom = async () => {
   }
   return obj;
 };
+
+
