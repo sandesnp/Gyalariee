@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ThemeToggler from "./components/ThemeToggler";
 import LandscapeCard from "./components/LandscapeCard";
-import { apiGetOneRandom } from "./API/requests";
+import { apiGetUniqueRandom } from "./API/requests";
 import useLocalStorage from "use-local-storage";
 
 const App = () => {
@@ -9,22 +9,25 @@ const App = () => {
   const [isDarkTheme, setIsDarkTheme] = useLocalStorage("isDarkTheme",themePreference);
   const [theMetObjects, setTheMetObject] = useState(new Set());
 
-  const fetchTheMetRandomObject = async (n = 1) => {
-    let objects = new Set(theMetObjects);
-    let randomObj;
+  const populateTheMetObjects = async (n = 1) => {
+    let objects = new Set(theMetObjects);  // set of objects (must be unique)
+    let objectIDs = new Set([...theMetObjects].map(o => o?.objectID)); // set of objectIDs only (for api call)
+    let randomObj; // random object picked from api to populate theMetObjects set (useState)
     for (let i = 0; i < n; i++) {
-      randomObj = await apiGetOneRandom();
-      if (!randomObj || objects.has(randomObj))
-        return fetchTheMetRandomObject();
+      // console.log(`###### OBJECT ${i+1} ######`);
+      randomObj = await apiGetUniqueRandom(objectIDs);
+      // console.log(randomObj)
+      objectIDs.add(randomObj.objectID);
+      // console.log([...objectIDs].sort((a,b)=> a-b))
       objects.add(randomObj);
-    }
+    // console.log([...objects]);
+  }
     setTheMetObject(new Set(objects));
-    console.log(theMetObjects);
-    return objects;
+    return theMetObjects;
   };
 
   useEffect(() => {
-    fetchTheMetRandomObject(15);
+    populateTheMetObjects(50);
   }, []);
 
   return (
