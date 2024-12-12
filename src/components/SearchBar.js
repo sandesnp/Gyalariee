@@ -1,4 +1,5 @@
 import React, {useState} from "react"; 
+import DropdownItem from "../components/DropdownItem"; 
 import {apiGetAll} from "../API/requests" ; 
 
 function SearchBar({onNewSearch}){
@@ -70,9 +71,32 @@ function SearchBar({onNewSearch}){
             </svg>
         </div> 
         <span className="search-bar__categories-text">Categories</span>
+
+        <svg 
+            className={isMenuOpen ? "search-bar__categories-arrowup-svg" : "search-bar__categories-arrowdown-svg"} 
+            width="13" 
+            height="13" 
+            viewBox="0 0 13 13" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <g clip-path="url(#clip0_46_796)">
+                <path d={isMenuOpen ? "M4.01375 8.34717L6.50002 5.86632L8.98628 8.34717L9.75003 7.58341L6.50002 4.3334L3.25 7.58341L4.01375 8.34717Z" : "M4.01375 4.65283L6.50002 7.13368L8.98628 4.65283L9.75003 5.41659L6.50002 8.6666L3.25 5.41659L4.01375 4.65283Z"} />
+            </g>
+            <defs>
+                <clipPath id="clip0_46_796">
+                    <rect width="13.0001" height="13.0001" fill="white"/>
+                </clipPath>
+            </defs>
+        </svg>
+
+
         <svg className="search-bar__categories-arrowdown-svg"   width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_46_796)">
-            <path d="M4.01375 4.65283L6.50002 7.13368L8.98628 4.65283L9.75003 5.41659L6.50002 8.6666L3.25 5.41659L4.01375 4.65283Z" fill="black"/>
+            <path fill="black" 
+            d={isMenuOpen ? 
+                "M4.01375 8.34717L6.50002 5.86632L8.98628 8.34717L9.75003 7.58341L6.50002 4.33341L3.25 7.58341L4.01375 8.34717Z" : 
+                "M4.01375 4.65283L6.50002 7.13368L8.98628 4.65283L9.75003 5.41659L6.50002 8.6666L3.25 5.41659L4.01375 4.65283Z" } />
             </g>
             <defs>
             <clipPath id="clip0_46_796">
@@ -85,29 +109,14 @@ function SearchBar({onNewSearch}){
 
         {isMenuOpen && (
             <div className="dropdown-menu__container">
-                <div className="dropdown-menu__column">
-
-                    { /* column left = propose some words to use as q= item OR item OR item  
-                    all animals, hipoos, girafe, et 
-                    */  }
-                    <label className="dropdown-menu__item">
-                        <input
-                        name="leftOne"
-                        type="checkbox"
-                        className="dropdown-menu__checkbox"
-                        />
-                        Criteria L1 (L= left)
-                    </label>
-                </div>             
-                <div className="dropdown-menu__column">
-                <label className="dropdown-menu__item">
-                    <input
-                    type="checkbox"
-                    className="dropdown-menu__checkbox"
-                    />
-                    Criteria R1
-                </label>
-                </div>
+                <DropdownItem name="item1" criteria="criteria1"/>
+                <DropdownItem name="item2" criteria="criteria2"/>
+                <DropdownItem name="item3" criteria="criteria3"/>
+                <DropdownItem name="item4" criteria="criteria4"/>
+                <DropdownItem name="item1" criteria="criteria1"/>
+                <DropdownItem name="item2" criteria="criteria2"/>
+                <DropdownItem name="item3" criteria="criteria3"/>
+                <DropdownItem name="item4" criteria="criteria4"/>
             </div>
         )}
 
