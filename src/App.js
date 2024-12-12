@@ -3,25 +3,28 @@ import ThemeToggler from "./components/ThemeToggler";
 import LandscapeCard from "./components/LandscapeCard";
 import { apiGetOneRandom } from "./API/requests";
 import useLocalStorage from "use-local-storage";
+import SearchBar from"./components/SearchBar" 
 
 const App = () => {
   const themePreference = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [isDarkTheme, setIsDarkTheme] = useLocalStorage("isDarkTheme",themePreference);
-  const [theMetObjects, setTheMetObject] = useState(new Set());
+  const [theMetObjects, setTheMetObject] = useState([]);
 
   const fetchTheMetRandomObject = async (n = 1) => {
-    let objects = new Set(theMetObjects);
-    let randomObj;
-    for (let i = 0; i < n; i++) {
-      randomObj = await apiGetOneRandom();
-      if (!randomObj || objects.has(randomObj))
-        return fetchTheMetRandomObject();
-      objects.add(randomObj);
-    }
-    setTheMetObject(new Set(objects));
-    console.log(theMetObjects);
-    return objects;
-  };
+  let objects = [];
+  let objectsID = [] ; 
+  let randomObj ;
+  let randomObjID ; 
+  while ( objects.length < n ) { 
+    randomObj = await apiGetOneRandom();
+    randomObjID = randomObj.objectID
+    if (!randomObj || !objects.some(obj => obj.objectID === randomObjID)) {
+    objects.push(randomObj);
+    objectsID.push(randomObjID)
+    }}
+  setTheMetObject(objects);
+  return (console.log("new objects fetch are ; "+ objectsID ) ) 
+  }
 
   useEffect(() => {
     fetchTheMetRandomObject(15);
@@ -31,7 +34,7 @@ const App = () => {
     <div id="app" className="app" data-theme={isDarkTheme ? "dark" : "light"}>
       <ThemeToggler setIsDarkTheme={setIsDarkTheme} isDarkTheme={isDarkTheme} />
       <SearchBar/>
-      {[...theMetObjects].map((o) => (
+      { theMetObjects.length === 0 ? (<p>Loading...</p>) : [...theMetObjects].map((o) => (
         <LandscapeCard key={o.objectID} {...o} />
       ))}
     </div>
