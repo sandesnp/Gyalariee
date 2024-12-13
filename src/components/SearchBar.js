@@ -26,6 +26,12 @@ function SearchBar({onSearch}){
         })
     }
 
+    function handleSearch() {
+        if (userQ.trim()) { // Vérifie si la recherche n'est pas vide
+            newQ();  // Appelle la fonction newQ si userQ contient quelque chose
+        }
+    }
+
     /* SEARCH BAR > track query in SearchBar area */ 
     const [userQ, setUserQ] = useState("") ; 
 
@@ -39,7 +45,12 @@ function SearchBar({onSearch}){
         const{isHighlight, isOnView} = areChecked
         const query = userQ || "*";
         const toQuery = await apiGetAll(query, isHighlight ?? false , isOnView ?? false) ;
-        setUserQ(""); 
+        setUserQ("");
+        setAreChecked({
+            isHighlight: false,
+            isOnView: false,
+        }); 
+        setIsMenuOpen(false);
         console.log(toQuery); 
         if (onSearch) { onSearch(toQuery)}
         else {console.log("onNewSearch doesnt exist")}
@@ -128,13 +139,15 @@ function SearchBar({onSearch}){
                 <label className="dropdown-menu__item" onChange={handleCheck}>
                     <input
                     name="isHighlight"
-                    type="checkbox"
+                    checked={areChecked.isHighlight}
+                    type="checkbox" 
                     className="dropdown-menu__checkbox"
                     /> Visible at the MET
                 </label>    
                 <label className="dropdown-menu__item" onChange={handleCheck}>
                     <input
                     name="isOnView"
+                    checked={areChecked.isOnView}
                     type="checkbox"
                     className="dropdown-menu__checkbox"
                     /> Highlight of the Met
