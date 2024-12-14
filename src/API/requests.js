@@ -1,4 +1,5 @@
 import axios from 'axios';
+import museum from '../data/museumIds.json';
 
 export const apiGetAll = async (query = '*', isHighlight = true) => {
   try {
@@ -31,10 +32,10 @@ export const apiGetOne = async (id) => {
 
 export const apiGetOneRandom = async () => {
   //491,708 is the harded-coded total objects in the api. Randoms between 0 and 491,707.
-  const randomId = Math.floor(Math.random() * (491708));
-  const obj = await apiGetOne(randomId);
+  const randomId = Math.floor(Math.random() * museum.objectIDs.length);
+  const obj = await apiGetOne(museum.objectIDs[randomId]);
   // Recursion
-  if (!obj || obj?.primaryImageSmall === "") {
+  if (!obj || obj?.primaryImageSmall === '') {
     return await apiGetOneRandom();
   }
   return obj;
