@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import ThemeToggler from './components/ThemeToggler';
 import LandscapeCard from './components/LandscapeCard';
-import { apiGetUniqueRandom } from './api/requests';
+import SearchBar from './components/SearchBar';
+import { getRandomArrayObj } from './helpers/getRandomArrayObj';
 import useLocalStorage from 'use-local-storage';
 
 const App = () => {
+  const [theMetObjects, setTheMetObject] = useState(new Set());
   const themePreference = window.matchMedia(
     '(prefers-color-scheme: dark)'
   ).matches;
@@ -12,35 +14,24 @@ const App = () => {
     'isDarkTheme',
     themePreference
   );
-  const [theMetObjects, setTheMetObject] = useState(new Set());
-
-  const populateTheMetObjects = async (n = 1) => {
-    let objects = new Set(theMetObjects); // set of objects (must be unique)
-    let objectIDs = new Set([...theMetObjects].map((o) => o?.objectID)); // set of objectIDs only (for api call)
-    let randomObj; // random object picked from api to populate theMetObjects set (useState)
-    while (objects.size < n) {
-      // console.log(`###### OBJECT ${i+1} ######`);
-      randomObj = await apiGetUniqueRandom(objectIDs);
-      // console.log(randomObj)
-      objectIDs.add(randomObj.objectID);
-      // console.log([...objectIDs].sort((a,b)=> a-b))
-      objects.add(randomObj);
-      // console.log([...objects]);
-    }
-    setTheMetObject(new Set(objects));
-    return theMetObjects;
-  };
 
   useEffect(() => {
-    populateTheMetObjects(5);
+    getRandomArrayObj(2, (response) => {
+      setTheMetObject(response);
+    });
   }, []);
-
   return (
     <div id='app' className='app' data-theme={isDarkTheme ? 'dark' : 'light'}>
       <ThemeToggler setIsDarkTheme={setIsDarkTheme} isDarkTheme={isDarkTheme} />
-      {[...theMetObjects].map((o) => (
-        <LandscapeCard key={o.objectID} {...o} />
-      ))}
+      <SearchBar setTheMetObject={setTheMetObject} />
+      {console.log('theMetObjects:', theMetObjects)}
+      {!theMetObjects.size ? (
+        <p>Loading...</p>
+      ) : (
+        [...theMetObjects].map((obj) => (
+          <LandscapeCard key={obj.objectID} {...obj} />
+        ))
+      )}
     </div>
   );
 };
