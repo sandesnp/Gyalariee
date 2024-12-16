@@ -22,6 +22,8 @@ const App = () => {
   }, []);
   return (
     <div id='app' className='app' data-theme={isDarkTheme ? 'dark' : 'light'}>
+    <div id="app" className="app" data-theme={isDarkTheme ? "dark" : "light"}>
+      <h1>Gyalariee</h1>
       <ThemeToggler setIsDarkTheme={setIsDarkTheme} isDarkTheme={isDarkTheme} />
       <SearchBar setTheMetObject={setTheMetObject} />
       {console.log('theMetObjects:', theMetObjects)}
