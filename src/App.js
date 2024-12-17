@@ -60,6 +60,7 @@ const App = () => {
 
   return (
     <div id="app" className="app" data-theme={isDarkTheme ? "dark" : "light"}>
+    <h1> Gyaleriee</h1>
       <ThemeToggler setIsDarkTheme={setIsDarkTheme} isDarkTheme={isDarkTheme} />
       <SearchBar onSearch={onSearch}/>
       { theMetObjects.length === 0 ? (<p>Loading...</p>) : [...theMetObjects].map((o) => (
