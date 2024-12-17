@@ -6,7 +6,6 @@
   /* Do we need red and blue */
   --color-red: #fb3640;
   --color-blue: #2978b5;
-
   /* to name new colors : use a naming based on a scale or on the purpose : 
   example : 
       color-greenscale1 to 5
@@ -27,9 +26,8 @@
   --color-grayscale4: hsl(0,0%,15%);
   --color-grayscale5: hsl(0,0%,0%);
 
-  --color-rosybrown1: hsl(16,33%,94%);
-  --color-rosybrown2: hsl(17,73%,85%) ; 
-  --color-rosybrown3: hsl(359,38%,67%);
+  --color-rosybrown: hsl(359,38%,67%);
+
 }
 
 
@@ -46,9 +44,17 @@
   --color-grayscale4: hsl(60, 15%, 90%);
   --color-grayscale5: hsl(0, 0%, 100%);
 
+  --color-rosybrown: hsl(359,38%,67%);
+
+
+/*
+previously there was a scale of rosybrown in the global. I am note sure we need it. 
+rosybrown below renders well with both light and dark modes   
   --color-rosybrown1: hsl(359,38%,67%); 
   --color-rosybrown2: hsl(17,73%,85%) ; 
   --color-rosybrown3: hsl(16,33%,94%);
+
+*/
 
 }
 

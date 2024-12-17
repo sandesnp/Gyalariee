@@ -34,11 +34,9 @@
   font-family: var(--font-serif-roboto);
 }
 
-/* verif ici */ 
 .search-bar__input-button {
   background-color: var(--color-grayscale4);
   border: none;
-  color: var(--color-grayscale4);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -48,8 +46,8 @@
   cursor: pointer;
   fill: var(--color-grayscale1); 
 }
-.search-bar__button:hover {
-  background-color: var(--color-grayscale4);
+.search-bar__input-button:hover {
+  background-color: var(--color-rosybrown);
 }
 
 .search-bar__categories-box {
@@ -83,6 +81,14 @@
   fill : var(--color-grayscale5) ; 
 }
 
+.search-bar__categories-box:hover {
+  .search-bar__categories-icon {
+    background-color: var(--color-rosybrown); }
+  .search-bar__categories-text { 
+    color : var(--color-rosybrown) }
+  .search-bar__categories-arrow {
+      fill : var(--color-rosybrown) }
+}
 
 
 
@@ -94,7 +100,7 @@
   top: 17rem ; 
   left: 20rem; 
   max-height: 20rem;
-  background-color: var(--color-grayscale1);
+  background-color: var(--color-grayscale2);
   border: 1px solid var(--color-grayscale5);
   border-radius: 1rem;
   padding: 2rem;
@@ -124,6 +130,6 @@
 }
 
 .dropdown-menu__item:hover {
-  color: var(--color-rosybrown2); 
+  color: var(--color-rosybrown); 
   font-weight: bold;
 }
