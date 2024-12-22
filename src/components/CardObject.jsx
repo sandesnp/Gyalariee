@@ -11,7 +11,7 @@ export default function CardObject(tmo) {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE1BFq0h-RvrEBWCMPudD2QMYcG2BDJVDYNw&s";
   let portrait = Math.round(Math.random()) === 1;
   return (
-    <div className="card">
+    <div className={`card ${portrait?'portrait':''}`}>
       <CardInfo {...tmo} />
       <CardImage {...tmo} />
     </div>

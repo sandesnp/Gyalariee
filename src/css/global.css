@@ -18,6 +18,7 @@
   --toggler-focus: hsl(240, 75%, 50%);
   --toggler-foreground: hsl(60, 75%, 75%);
   --toggler-background: hsl(60, 75%, 45%);
+  --color-grayscale4: hsl(0,0%,90%);
 }
 
 /* dark" template */
@@ -29,6 +30,7 @@
   --toggler-background: hsl(240, 75%, 45%);
   --color-black: white;
   --color-white: black;
+  --color-grayscale4: hsl(0,0%,15%);
 }
 
 *,

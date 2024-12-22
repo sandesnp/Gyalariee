@@ -11,7 +11,7 @@ const App = () => {
   const [isDarkTheme, setIsDarkTheme] = useLocalStorage("isDarkTheme",themePreference);
 
   useEffect(() => {
-    getRandomArrayObj(10, (response) => {
+    getRandomArrayObj(50, (response) => {
       setTheMetObject(response);
     });
   }, []);

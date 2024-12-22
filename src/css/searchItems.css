@@ -1,7 +1,9 @@
 .search-items {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  /* align-items: stretch; */
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: calc(50% - 1rem) calc(50% - 1rem);
+  grid-template-rows: 15rem;
+  grid-auto-rows: auto;
+  grid-auto-flow: dense;
 }
