@@ -1,4 +1,4 @@
-import { apiGetOne, apiSearch } from '../api/requests';
+import { apiGetOne, apiSearch } from "../api/requests";
 
 export const getArrayObj = async (length = 1, params, callback) => {
   const objectIds = await apiSearch(params);

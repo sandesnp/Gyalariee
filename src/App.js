@@ -5,13 +5,15 @@ import Search from "./components/Search";
 import { getRandomArrayObj } from "./helpers/getRandomArrayObj";
 import useLocalStorage from "use-local-storage";
 
+console.clear();
+
 const App = () => {
   const [theMetObjects, setTheMetObject] = useState(new Set());
   const themePreference = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [isDarkTheme, setIsDarkTheme] = useLocalStorage("isDarkTheme",themePreference);
 
   useEffect(() => {
-    getRandomArrayObj(50, (response) => {
+    getRandomArrayObj(25, (response) => {
       setTheMetObject(response);
     });
   }, []);
