@@ -13,16 +13,19 @@ const App = () => {
   const [isDarkTheme, setIsDarkTheme] = useLocalStorage("isDarkTheme",themePreference);
 
   useEffect(() => {
-    getRandomArrayObj(25, (response) => {
-      setTheMetObject(response);
-    });
+    getRandomArrayObj(20, theMetObjects, setTheMetObject);
   }, []);
+
+  const extraObjects = async () => {
+    getRandomArrayObj(10, theMetObjects, setTheMetObject);
+  }
 
   return (
     <div id="app" className="app" data-theme={isDarkTheme ? "dark" : "light"}>
       <h1>Gyalariee</h1>
       <ThemeToggler setIsDarkTheme={setIsDarkTheme} isDarkTheme={isDarkTheme} />
       <Search setTheMetObject={setTheMetObject} tmo={theMetObjects} />
+      <button onClick={extraObjects} style={{margin: "2rem 4rem", padding: "1rem 2rem"}}>Add More Objects</button>
       {/* <Display {...object}/> */}
     </div>
   );
