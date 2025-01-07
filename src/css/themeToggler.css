@@ -24,6 +24,7 @@
           width: 3.6rem;
           border-radius: 0.8rem;
           background-color: var(--toggler-background);
+          background-image: linear-gradient(to right,rgb(29, 29, 201),rgb(201, 201, 29));
           transition: background-color 200ms ease-in-out;
         }
         &::after {

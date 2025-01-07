@@ -1,12 +1,14 @@
-import { getUniqueRandom } from './getUniqueRandom';
+import { getUniqueRandom } from "./getUniqueRandom";
+import { setImageOrientation } from "./setImageOrientation";
 
-export const getRandomArrayObj = async (length = 1, callback) => {
-  let objectIDs = new Set();
-  let objects = new Set();
-  while (objectIDs.size < length) {
+export const getRandomArrayObj = async (length = 1, objects = new Set(), callback) => {
+  let objectIDs = new Set([...objects].map(o=> o.id));
+  let newObjects = new Set(objects);
+  for(let i = 0; i < length; i++) {
     const randomObj = await getUniqueRandom(objectIDs);
-    objectIDs.add(randomObj.objectID);
-    objects.add(randomObj);
+    const orientedObject = await setImageOrientation(randomObj);
+    objectIDs.add(orientedObject.objectID);
+    newObjects.add(orientedObject);
   }
-  callback(objects);
+  callback(newObjects);
 };

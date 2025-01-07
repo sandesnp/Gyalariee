@@ -1,7 +1,7 @@
 /* light template */
 :root {
   --color-black: black;
-  --color-white: white;  
+  --color-white: white;
   --color-dark: #151515;
   --color-light: #f9f3f3;
   --color-primary: #ca8a8b;
@@ -9,15 +9,17 @@
   --color-primary-lighter: #f4ece9;
   --color-red: #fb3640;
   --color-blue: #2978b5;
-  --font-serif-roboto: 'Roboto Mono', monospace;
-  --font-sans-serif-montserrat: 'Montserrat Alternates', sans-serif;
+  --font-serif-roboto: "Roboto Mono", monospace;
+  --font-sans-serif-montserrat: "Montserrat Alternates", sans-serif;
   --color-gray-dark: #687980;
-  
+
   --background-color: hsl(60, 15%, 90%);
   --primary-text-color: #151515;
   --toggler-focus: hsl(240, 75%, 50%);
   --toggler-foreground: hsl(60, 75%, 75%);
-  --toggler-background: hsl(60, 75%, 45%);}
+  --toggler-background: hsl(60, 75%, 45%);
+  --color-grayscale4: hsl(0,0%,90%);
+}
 
 /* dark" template */
 [data-theme="dark"] {
@@ -28,6 +30,7 @@
   --toggler-background: hsl(240, 75%, 45%);
   --color-black: white;
   --color-white: black;
+  --color-grayscale4: hsl(0,0%,15%);
 }
 
 *,
