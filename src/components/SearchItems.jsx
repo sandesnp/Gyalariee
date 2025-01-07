@@ -1,21 +1,20 @@
-import "../css/searchItems.css";
-import CardObject from "./CardObject";
+import Card from "./Card";
 
-export default function SearchItems({ tmo }) {
+export default function SearchItems({ museumObjects }) {
   let halfSizeCounter = 0;
   return (
     <div className="search-items">
-      {!tmo?.size ? (
+      {!museumObjects?.size ? (
         <p>Loading...</p>
       ) : (
-        [...tmo].map((obj) => {
-          if (obj.orientation === "portrait")
+        [...museumObjects].map((obj) => {
+          if (obj.orientation === "card--portrait")
             halfSizeCounter = 3 - halfSizeCounter;
-          if (obj.orientation !== "portrait" && halfSizeCounter > 0) {
+          if (obj.orientation !== "card--portrait" && halfSizeCounter > 0) {
             halfSizeCounter--;
-            obj.orientation = "half-landscape";
+            obj.orientation = "card--half-landscape";
           }
-          return <CardObject key={obj.objectID} tmo={obj} />;
+          return <Card key={obj.objectID} museumObject={obj} />;
         })
       )}
     </div>

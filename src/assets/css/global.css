@@ -1,4 +1,3 @@
-/* light template */
 :root {
   --color-black: black;
   --color-white: white;
@@ -13,23 +12,24 @@
   --font-sans-serif-montserrat: "Montserrat Alternates", sans-serif;
   --color-gray-dark: #687980;
 
-  --background-color: hsl(60, 15%, 90%);
+/* Light template */
+  --background-color: hsl(0, 0%, 100%);
   --primary-text-color: #151515;
+  --primary-text-color-inverse: #f9f3f3;
   --toggler-focus: hsl(240, 75%, 50%);
   --toggler-foreground: hsl(60, 75%, 75%);
   --toggler-background: hsl(60, 75%, 45%);
   --color-grayscale4: hsl(0,0%,90%);
 }
 
-/* dark" template */
+/* Dark" template */
 [data-theme="dark"] {
-  --background-color: hsl(240, 75%, 5%);
+  --background-color: hsl(0, 0%, 0%);
   --primary-text-color: #f9f3f3;
+  --primary-text-color-inverse: #151515;
   --toggler-focus: hsl(60, 75%, 50%);
   --toggler-foreground: hsl(240, 75%, 75%);
   --toggler-background: hsl(240, 75%, 45%);
-  --color-black: white;
-  --color-white: black;
   --color-grayscale4: hsl(0,0%,15%);
 }
 
@@ -53,19 +53,19 @@ body {
   font-size: 1.6rem;
 }
 
-html,
-body,
-#root {
-  /* Making sure main container takes full screen height */
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-#root > .app {
-  flex: 1;
-}
 
 #app {
   background-color: var(--background-color);
   color: var(--primary-text-color);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
+.right-wall {
+  width: 100%;
+  padding-top: 3rem;
+  z-index: 2;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  background-color: var(--background-color);
 }

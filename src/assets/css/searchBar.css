@@ -1,21 +1,19 @@
-.search-bar__container {
-  position : relative ; 
+.search-bar {
+  position: relative;
   background-color: var(--color-white);
-  min-width: 60rem;
-  min-height: 20rem;
+  height: 20rem;
   padding: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
 }
-
 .search-bar__input-box {
   display: flex;
   align-items: center;
   padding: 2rem;
   border-bottom: 2px solid var(--color-black);
 }
-
 .search-bar__input-text {
   flex: 1;
   border: none;
@@ -24,12 +22,14 @@
   color: var(--color-black);
   padding: 1rem 0;
 }
-
+.search-bar__input::-moz-placeholder {
+  color: var(--color-black);
+  font-family: var(--font-serif-roboto);
+}
 .search-bar__input::placeholder {
   color: var(--color-black);
   font-family: var(--font-serif-roboto);
 }
-
 .search-bar__input-button {
   background-color: var(--color-black);
   border: none;
@@ -45,13 +45,11 @@
 .search-bar__button:hover {
   background-color: var(--color-gray-dark);
 }
-
 .search-bar__categories-box {
   display: flex;
   align-items: center;
   padding: 2rem;
 }
-
 .search-bar__categories-icon {
   background-color: var(--color-gray-dark);
   border-radius: 50%;
@@ -62,31 +60,24 @@
   justify-content: center;
   font-size: 2rem;
 }
-
 .search-bar__categories-text {
   font-size: 16px;
-  color: #000;
+  color: var(--primary-text-color);
   padding: 1rem;
   font-size: 1.5rem;
   font-family: var(--font-serif-roboto);
 }
-
 .search-bar__categories-arrow {
   display: block;
   margin: auto;
   cursor: pointer;
 }
 
-
-
-
 /* addition for the dropdown menu that is togle inside the SearchBar */
-
-
 .dropdown-menu__container {
   position: absolute;
-  top: 17rem ; 
-  left: 20rem; 
+  top: 17rem;
+  left: 20rem;
   max-height: 20rem;
   background-color: var(--color-primary);
   border: 1px solid var(--color-black);
@@ -99,25 +90,22 @@
   flex-direction: column;
   flex-wrap: wrap;
 }
-
 .dropdown-menu__item {
   display: flex;
   align-items: center;
-  gap: 0.5rem; 
+  gap: 0.5rem;
   font-size: 1.4rem;
   color: var(--color-black);
   font-family: var(--font-serif-roboto);
   cursor: pointer;
 }
-
 .dropdown-menu__checkbox {
   width: 1.5rem;
   height: 1.5rem;
-  accent-color: var(--color-black); 
+  accent-color: var(--color-black);
   cursor: pointer;
 }
-
 .dropdown-menu__item:hover {
-  color: var(--color-primary-lighter); 
+  color: var(--color-primary-lighter);
   font-weight: bold;
-}
+}/*# sourceMappingURL=searchBar.css.map */

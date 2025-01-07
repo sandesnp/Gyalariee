@@ -1,0 +1,24 @@
+/*
+0- 600px; Phone
+600 - 900px; Table portrait
+900 - 1200px; Tablet landscape
+[1200 - 2000} is where our normal styles apply
+2000px + : big desktop
+*/
+.search {
+  width: 43%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: var(--background-color);
+}
+@media only screen and (max-width: 75em) {
+  .search {
+    width: 38%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .search {
+    width: 100%;
+  }
+}/*# sourceMappingURL=search.css.map */

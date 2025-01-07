@@ -4,6 +4,8 @@
 @import url('./themeToggler.css');
 
 /* Components */
-@import url('./potraitCard.css');
-@import url('./landscapeCard.css');
 @import url('./searchBar.css');
+@import url('./card.css');
+@import url('./search.css');
+@import url('./searchItems.css');
+
