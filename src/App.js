@@ -1,31 +1,37 @@
-import React, { useState, useEffect } from "react";
-import ThemeToggler from "./components/ThemeToggler";
-import Search from "./components/Search";
-// import Display from './components/Display';
-import { getRandomArrayObj } from "./helpers/getRandomArrayObj";
-import useLocalStorage from "use-local-storage";
-import Card from "./components/Card";
-
-console.clear();
+import React, { useState, useEffect, useRef } from 'react';
+import ThemeToggler from './components/ThemeToggler';
+import { getRandomArrayObj } from './helpers/getRandomArrayObj';
+import useLocalStorage from 'use-local-storage';
+import dummyData from './data/dummy';
+import Leftwall from './components/Leftwall';
+import Rightwall from './components/Rightwall';
+const themePreference = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 const App = () => {
-  const [museumObjects, setMuseumObjects] = useState(new Set());
-  const themePreference = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const [isDarkTheme, setIsDarkTheme] = useLocalStorage("isDarkTheme",themePreference);
+  // const [museumObjects, setMuseumObjects] = useState(new Set());
+  const [museumObjects, setMuseumObjects] = useState(dummyData);
+  const [selectedCard, setSelectedCard] = useState(dummyData[1]);
+  const [isDarkTheme, setIsDarkTheme] = useLocalStorage('isDarkTheme', themePreference);
+  const handleSelect = (ID) => {
+    const card = museumObjects.find((card) => card.objectID == ID);
+    setSelectedCard(card);
+  };
 
-  useEffect(() => {
-    getRandomArrayObj(10, (response) => {
-      setMuseumObjects(response);
-    });
-  }, [0]);
+  // useEffect(() => {
+  // getRandomArrayObj(5, (response) => {
+  //   setMuseumObjects([...response]);
+  // });
+  // }, [0]);
 
   return (
-    <div id="app" className="app" data-theme={isDarkTheme ? "dark" : "light"}>
+    <div id='app' className='app' data-theme={isDarkTheme ? 'dark' : 'light'}>
+      <Leftwall
+        museumObjects={museumObjects}
+        setMuseumObjects={setMuseumObjects}
+        handleSelect={handleSelect}
+      />
+      <Rightwall selectedCard={selectedCard} />
       <ThemeToggler setIsDarkTheme={setIsDarkTheme} isDarkTheme={isDarkTheme} />
-      <Search setMuseumObjects={setMuseumObjects} museumObjects={museumObjects} />
-      <section className="right-wall" >
-      {museumObjects.size>0 &&<Card museumObject={Array.from(museumObjects)[0]} selected={true}/>}
-      </section>
     </div>
   );
 };

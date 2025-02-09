@@ -175,4 +175,9 @@ sketch
 .ionide
 build/
 
+#Robo's Working environment
+
+src/assets/scss/
+temps/
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,node,react
