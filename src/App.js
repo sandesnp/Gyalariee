@@ -17,11 +17,11 @@ const App = () => {
     setSelectedCard(card);
   };
 
-  // useEffect(() => {
-  // getRandomArrayObj(5, (response) => {
-  //   setMuseumObjects([...response]);
-  // });
-  // }, [0]);
+  useEffect(() => {
+    getRandomArrayObj(15, (response) => {
+      setMuseumObjects([...response]);
+    });
+  }, [0]);
 
   return (
     <div id='app' className='app' data-theme={isDarkTheme ? 'dark' : 'light'}>

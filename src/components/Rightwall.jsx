@@ -16,12 +16,14 @@ export default function Rightwall({ selectedCard }) {
     primaryImageSmall = 'images/unknown.png',
     orientation = null,
   } = selectedCard;
-
+  console.log(selectedCard);
   return (
     <div className='right-wall'>
       <div
         className={`card ${
-          orientation === 'card--portrait' ? 'card--portrait-content' : 'card--landscape-content'
+          orientation === 'card--half-landscape'
+            ? 'card--landscape-content'
+            : orientation + '-content'
         } selected`}
       >
         <div className='card__heading card-anim card-anim-a'>
@@ -29,11 +31,8 @@ export default function Rightwall({ selectedCard }) {
           <div className='card__info-id'>/paintings/[{objectID}]</div>
         </div>
         <div className='card__inner-container'>
-          <div className='card__inner-heading card-anim card-anim-b'>
-            <span className='card__culture'>{culture}</span>
-            <span className='card__period'>{period}</span>
-          </div>
-          <div className='card__content'>
+          <div className='card__inner-container--left'>
+            <div className='card__spacing'>&nbsp;</div>
             <div className='card__info'>
               <div className='card__info-heading card-anim card-anim-c'>
                 <h3 className='card__artist-name'>{artistDisplayName}</h3>
@@ -46,18 +45,27 @@ export default function Rightwall({ selectedCard }) {
                 </div>
                 <ul className='card__tags'>
                   <li className='card__tags-item'>{objectName}</li>
-                  <li className='card__tags_item'>{department}</li>
+                  <li className='card__tags-item'>{department}</li>
                 </ul>
               </div>
             </div>
-            <div className='card__image-info'>
-              <figure className='card__image card-anim card-anim-e' id='main-content-image'>
-                <img src={primaryImageSmall} />
+          </div>
+          <div className='card__inner-container--right'>
+            <div className='card__inner-heading card-anim card-anim-b'>
+              <span className='card__culture'>{culture}</span>
+              <span className='card__period'>{period}</span>
+            </div>
+            <div className='card__media'>
+              <figure className='card__media-image card-anim card-anim-e'>
+                <img src={primaryImageSmall} alt='Gyalariee musuem image' id='main-content-image' />
+                {/* <div className='img'></div> */}
               </figure>
-              <p className='card__image-dimension card-anim card-anim-d'>{dimensions}</p>
-              <p className='card__date-period card-anim card-anim-d'>
-                {objectBeginDate} ~ {objectEndDate}
-              </p>
+              <div className='card__media-info'>
+                <p className='card__image-dimension card-anim card-anim-d'>{dimensions}</p>
+                <p className='card__date-period card-anim card-anim-d'>
+                  [{objectBeginDate} ~ {objectEndDate}]
+                </p>
+              </div>
             </div>
           </div>
         </div>

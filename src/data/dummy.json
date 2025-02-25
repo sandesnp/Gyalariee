@@ -32,6 +32,57 @@
       "dimensions": "77 cm × 53 cm",
       "primaryImageSmall":"//unsplash.it/300/600",
       "orientation":"card--portrait"
+    },
+    {
+      "title": "Landscape B",
+      "artistDisplayName": "Leonardo da Vinci Landscape",
+      "objectName": "Portrait",
+      "department": "Italian Renaissance",
+      "objectID": 3,
+      "creditLine": "Acquired by King Francis I",
+      "medium": "Oil on poplar panel",
+      "repository": "Louvre Museum",
+      "culture": "Italian",
+      "period": "Renaissance",
+      "objectBeginDate": 1503,
+      "objectEndDate": 1519,
+      "dimensions": "77 cm × 53 cm",
+      "primaryImageSmall":"//unsplash.it/600/300",
+      "orientation":"card--landscape"
+    },
+    {
+      "title": "Landscape C",
+      "artistDisplayName": "Leonardo da Vinci Landscape",
+      "objectName": "Portrait",
+      "department": "Italian Renaissance",
+      "objectID": 4,
+      "creditLine": "Acquired by King Francis I",
+      "medium": "Oil on poplar panel",
+      "repository": "Louvre Museum",
+      "culture": "Italian",
+      "period": "Renaissance",
+      "objectBeginDate": 1503,
+      "objectEndDate": 1519,
+      "dimensions": "77 cm × 53 cm",
+      "primaryImageSmall":"//unsplash.it/600/300",
+      "orientation":"card--landscape"
+    },
+    {
+      "title": "Landscape D",
+      "artistDisplayName": "Leonardo da Vinci Landscape",
+      "objectName": "Portrait",
+      "department": "Italian Renaissance",
+      "objectID": 5,
+      "creditLine": "Acquired by King Francis I",
+      "medium": "Oil on poplar panel",
+      "repository": "Louvre Museum",
+      "culture": "Italian",
+      "period": "Renaissance",
+      "objectBeginDate": 1503,
+      "objectEndDate": 1519,
+      "dimensions": "77 cm × 53 cm",
+      "primaryImageSmall":"//unsplash.it/600/300",
+      "orientation":"card--landscape"
     }
   ]
   
