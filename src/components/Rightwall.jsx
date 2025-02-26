@@ -16,7 +16,6 @@ export default function Rightwall({ selectedCard }) {
     primaryImageSmall = 'images/unknown.png',
     orientation = null,
   } = selectedCard;
-  console.log(selectedCard);
   return (
     <div className='right-wall'>
       <div

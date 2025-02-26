@@ -1,9 +1,9 @@
 import SearchCard from './SearchCard';
 
-export default function SearchItems({ museumObjects, handleSelect, scrollRef }) {
+export default function SearchItems({ museumObjects, handleSelect }) {
   let halfSizeCounter = 0;
   return (
-    <div className='search-items' ref={scrollRef}>
+    <div className='search-items'>
       {!museumObjects?.length ? (
         <p>Loading...</p>
       ) : (

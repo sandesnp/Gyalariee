@@ -19,32 +19,33 @@ const App = () => {
     setSelectedCard(card);
   };
 
-  // useEffect(() => {
-  //   getRandomArrayObj(15, (response) => {
-  //     setMuseumObjects([...response]);
-  //   });
-  // }, [0]);
+  useEffect(() => {
+    getRandomArrayObj(15, (response) => {
+      setMuseumObjects([...response]);
+    });
+  }, [0]);
 
   function onThemeToggle() {
     setIsDarkTheme(!isDarkTheme);
-    const originalScrollPos = scrollRef.current.scrollTop;
+    const originalScrollPos = scrollRef.current.querySelector('.search-items').scrollTop;
     const cloneApp = document.getElementById('app').cloneNode(true);
     Object.assign(cloneApp.style, {
       position: 'absolute',
       zIndex: '1000',
       left: 0,
       top: 0,
-      width: '100vw',
+      width: `${scrollRef.current.offsetWidth}px`,
       dataTheme: 'dark',
       overflow: 'hidden',
     });
     document.body.appendChild(cloneApp);
     cloneApp.querySelector('.search-items').scrollTop = originalScrollPos;
-    const appTimeline = anime.timeline({ easing: 'linear' });
-    appTimeline.add({
+
+    anime({
       targets: cloneApp,
       height: 0,
-      duration: 1000,
+      duration: 500,
+      easing: 'linear',
       complete: (_) => {
         document.body.removeChild(cloneApp);
       },
@@ -52,12 +53,11 @@ const App = () => {
   }
 
   return (
-    <div id='app' className='app' data-theme={isDarkTheme ? 'dark' : 'light'}>
+    <div id='app' className='app' data-theme={isDarkTheme ? 'dark' : 'light'} ref={scrollRef}>
       <Leftwall
         museumObjects={museumObjects}
         setMuseumObjects={setMuseumObjects}
         handleSelect={handleSelect}
-        scrollRef={scrollRef}
       />
       <Rightwall selectedCard={selectedCard} />
       <ThemeToggler onThemeToggle={onThemeToggle} isDarkTheme={isDarkTheme} />
