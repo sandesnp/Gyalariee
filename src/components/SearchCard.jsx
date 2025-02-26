@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import anime from 'animejs/lib/anime.es.js';
 
 export default function SearchCard({ museumObject, handleSelect }) {
@@ -93,7 +93,8 @@ export default function SearchCard({ museumObject, handleSelect }) {
     <div className={'card ' + orientation} ref={cardRef} onClick={animationCard}>
       <div className='card--search'>
         <div className='card__info'>
-          <h4 className='card__artist'>{artistDisplayName}</h4>
+          {}
+          {artistDisplayName && <h4 className='card__artist'>{artistDisplayName}</h4>}
           <ul className='card__tags'>
             <li className='card__object-name'>{objectName}</li>
             <li className='card__department'>{department}</li>
