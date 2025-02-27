@@ -51,7 +51,31 @@
 
 html {
   font-size: 62.5%;
-  /* So 1 rem = 10px */
+}
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 68.75%;
+  }
+}
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 60%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  html {
+    font-size: 50%;
+  }
+}
+@media only screen and (max-width: 25em) {
+  html {
+    font-size: 46.875%;
+  }
 }
 
 body {
@@ -122,10 +146,12 @@ body {
 .card--landscape .card--search, .card--half-landscape .card--search {
   height: 100%;
   display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
   gap: 1rem;
 }
 .card--landscape .card--search .card__info, .card--half-landscape .card--search .card__info {
   display: grid;
+  align-items: start;
 }
 .card--landscape .card--search .card__image img, .card--half-landscape .card--search .card__image img {
   width: 100%;
@@ -133,16 +159,10 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.card--landscape .card--search {
-  grid-template-rows: auto 1fr;
-}
-.card--half-landscape .card--search {
-  grid-template-rows: auto 1fr;
-}
 .card--portrait .card--search {
   height: 100%;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto minmax(0, 1fr);
   gap: 1rem;
 }
 .card--portrait .card--search .card__info {
@@ -155,11 +175,26 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
 }
+@media only screen and (max-width: 75em) {
+  .card--landscape .card--search, .card--half-landscape .card--search, .card--portrait .card--search {
+    font-size: 1.4rem;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .card--landscape .card--search, .card--half-landscape .card--search, .card--portrait .card--search {
+    font-size: 1.8rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .card--landscape .card--search, .card--half-landscape .card--search, .card--portrait .card--search {
+    font-size: 1.4rem;
+  }
+}
 .card--portrait-content.selected {
   max-height: 110rem;
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
   gap: 3rem;
 }
 .card--portrait-content.selected .card__heading {
@@ -190,6 +225,11 @@ body {
   display: flex;
   gap: 2rem;
 }
+@media only screen and (max-width: 75em) {
+  .card--portrait-content.selected .card__inner-container {
+    gap: 1rem;
+  }
+}
 .card--portrait-content.selected .card__inner-container--left {
   flex-basis: 40%;
   display: flex;
@@ -198,9 +238,8 @@ body {
 }
 .card--portrait-content.selected .card__inner-container--right {
   flex: 1;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
   gap: 1rem;
 }
 .card--portrait-content.selected .card__content {
@@ -241,13 +280,8 @@ body {
   justify-content: space-between;
 }
 .card--portrait-content.selected .card__media {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.card--portrait-content.selected .card__media-image {
-  flex: 1;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
 }
 .card--portrait-content.selected .card__media-image img {
   width: 100%;
@@ -264,8 +298,8 @@ body {
 .card--landscape-content.selected {
   max-height: 110rem;
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
   gap: 3rem;
 }
 .card--landscape-content.selected .card__heading {
@@ -294,18 +328,22 @@ body {
 }
 .card--landscape-content.selected .card__inner-container {
   padding: 0 5rem;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
   gap: 1rem;
+}
+@media only screen and (max-width: 75em) {
+  .card--landscape-content.selected .card__inner-container {
+    padding: 0 1rem;
+  }
 }
 .card--landscape-content.selected .card__inner-container--left {
   order: 2;
 }
 .card--landscape-content.selected .card__inner-container--right {
   order: 1;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
   gap: 1rem;
 }
 .card--landscape-content.selected .card__content {
@@ -343,14 +381,9 @@ body {
   justify-content: space-between;
 }
 .card--landscape-content.selected .card__media {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
   gap: 2rem;
-  align-items: center;
-}
-.card--landscape-content.selected .card__media-image {
-  width: 100%;
-  flex: 1;
 }
 .card--landscape-content.selected .card__media-image img {
   width: 100%;
@@ -425,37 +458,67 @@ body {
   border-radius: 0.8rem;
 }
 
+.wall-toggle {
+  color: var(--background-color-inverse);
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  cursor: pointer;
+  display: none;
+}
+@media only screen and (max-width: 56.25em) {
+  .wall-toggle {
+    display: block;
+  }
+}
+
 .left-wall {
   height: 100vh;
+  padding-left: 1rem;
+  padding-top: 1rem;
   flex-basis: 35%;
   display: flex;
   flex-direction: column;
   background-color: var(--background-color);
+  overflow: hidden;
 }
 @media only screen and (max-width: 75em) {
   .left-wall {
-    width: 38%;
+    flex-basis: 50%;
   }
 }
 @media only screen and (max-width: 56.25em) {
   .left-wall {
-    width: 100%;
+    flex-basis: 100%;
+    padding-top: 5rem;
   }
 }
 
 .right-wall {
   z-index: 1;
   flex: 1;
+  overflow: hidden;
   box-shadow: -1px -5px 5px hsla(var(--background-color-inverse), 0.5);
   padding: 5rem 5rem 2rem;
   height: 100vh;
+}
+@media only screen and (max-width: 75em) {
+  .right-wall {
+    padding: 10rem 1rem 1rem;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .right-wall {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .search-bar {
   position: relative;
   background-color: var(--background-color);
   height: 20rem;
-  padding: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -464,7 +527,8 @@ body {
 .search-bar__input-box {
   display: flex;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
+  gap: 1rem;
   border-bottom: 2px solid var(--background-color-inverse);
 }
 .search-bar__input-text {
@@ -510,7 +574,7 @@ body {
 .search-bar__categories-box {
   display: flex;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
 }
 .search-bar__categories-icon {
   background-color: var(--background-color-inverse);
@@ -579,13 +643,28 @@ body {
 
 .search-items {
   padding-top: 2rem;
-  padding-left: 1rem;
+  padding-bottom: 1rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 25vh;
+  grid-auto-rows: 30rem;
   grid-auto-flow: row dense;
   grid-gap: 1rem;
   overflow-y: scroll;
+}
+@media only screen and (max-width: 75em) {
+  .search-items {
+    grid-auto-rows: 20rem;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  .search-items {
+    grid-auto-rows: 20vh;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .search-items {
+    grid-auto-rows: 25rem;
+  }
 }
 
 .left-wall .card {

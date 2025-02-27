@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 export default function Rightwall({ selectedCard }) {
   const {
     title = '$title',
@@ -16,11 +18,21 @@ export default function Rightwall({ selectedCard }) {
     primaryImageSmall = 'images/unknown.png',
     orientation = null,
   } = selectedCard;
+
+  const [vw, setVw] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => setVw(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className='right-wall'>
       <div
         className={`card ${
-          orientation === 'card--half-landscape'
+          vw < 1200
+            ? 'card--landscape-content'
+            : orientation === 'card--half-landscape'
             ? 'card--landscape-content'
             : orientation + '-content'
         } selected`}

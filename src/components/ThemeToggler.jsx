@@ -9,7 +9,6 @@ const ThemeToggler = ({ onThemeToggle, isDarkTheme }) => {
           onChange={onThemeToggle}
           checked={isDarkTheme}
         />
-        {isDarkTheme ? 'Dark' : 'Light'} Theme
         <span className='theme-toggler__icon'></span>
       </label>
     </div>
