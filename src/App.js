@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import ThemeToggler from './components/ThemeToggler';
 import { getRandomArrayObj } from './helpers/getRandomArrayObj';
 import useLocalStorage from 'use-local-storage';
-import dummyData from './data/dummy';
 import Leftwall from './components/Leftwall';
 import Rightwall from './components/Rightwall';
 import anime from 'animejs/lib/anime.es.js';
