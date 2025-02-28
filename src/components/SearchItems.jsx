@@ -1,6 +1,7 @@
 import SearchCard from './SearchCard';
 
 export default function SearchItems({ museumObjects, handleSelect }) {
+  console.log(museumObjects);
   let halfSizeCounter = 0;
   return (
     <div className='search-items'>

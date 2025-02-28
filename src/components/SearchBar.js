@@ -19,12 +19,14 @@ function SearchBar({ setMuseumObjects }) {
     }));
   }
 
-  async function newQ() {
+  async function newQ(e) {
+    if (e.key !== 'Enter') return;
     if (!params.q) return;
-    await getArrayObj(2, params, (response) => {
-      setMuseumObjects(new Set(response));
+    setMuseumObjects([]);
+    await getArrayObj(5, params, (response) => {
+      setMuseumObjects(response);
     });
-    setIsMenuOpen(false);
+    // setIsMenuOpen(false);
   }
 
   return (
@@ -37,13 +39,14 @@ function SearchBar({ setMuseumObjects }) {
           placeholder='search...'
           className='search-bar__input-text'
           onChange={handleChange}
+          onKeyDown={newQ}
         />
-        <button className='search-bar__input-button' onClick={newQ}>
+        <button className='search-bar__input-button' onClick={() => newQ({ key: 'Enter' })}>
           <i className='fa-solid fa-magnifying-glass'></i>
         </button>
       </div>
 
-      <div className='search-bar__categories-box' onClick={toggleMenu}>
+      <div className='search-bar__categories-box' onClick={toggleMenu} style={{ display: 'none' }}>
         <div className='search-bar__categories-icon'>
           <i className='fa-solid fa-shapes'></i>
         </div>

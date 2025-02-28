@@ -54,7 +54,7 @@ const App = () => {
     anime({
       targets: cloneApp,
       height: 0,
-      duration: 1000,
+      duration: 1500,
       easing: 'linear',
       complete: (_) => {
         document.body.removeChild(cloneApp);
