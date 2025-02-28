@@ -416,10 +416,6 @@ body {
 /* --------------------------------------
    Separate 'card-anim' block for animation states
 -------------------------------------- */
-.card-anim-a, .card-anim-b, .card-anim-c, .card-anim-d, .card-anim-e {
-  opacity: 0;
-}
-
 .theme-toggler {
   position: absolute;
   top: 1rem;

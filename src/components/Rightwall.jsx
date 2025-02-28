@@ -25,9 +25,8 @@ export default function Rightwall({ selectedCard }) {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
   return (
-    <div className='right-wall'>
+    <div className='right-wall' style={objectID === '$objectID' ? { opacity: 0 } : {}}>
       <div
         className={`card ${
           vw < 1200

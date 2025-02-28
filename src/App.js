@@ -9,9 +9,8 @@ import anime from 'animejs/lib/anime.es.js';
 const themePreference = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 const App = () => {
-  // const [museumObjects, setMuseumObjects] = useState(new Set());
-  const [museumObjects, setMuseumObjects] = useState(dummyData);
-  const [selectedCard, setSelectedCard] = useState(dummyData[1]);
+  const [museumObjects, setMuseumObjects] = useState([]);
+  const [selectedCard, setSelectedCard] = useState({});
   const [isDarkTheme, setIsDarkTheme] = useLocalStorage('isDarkTheme', themePreference);
   const [wallToggle, setWallToggle] = useState(false);
   const scrollRef = useRef(null);
@@ -33,7 +32,9 @@ const App = () => {
 
   useEffect(() => {
     getRandomArrayObj(10, (response) => {
-      setMuseumObjects([...response]);
+      const convertedArray = [...response];
+      setMuseumObjects(convertedArray);
+      setSelectedCard(convertedArray[0]);
     });
   }, []);
 
