@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Gyalariee/static/css/main.48616c03.css",
+    "main.js": "/Gyalariee/static/js/main.02c6173f.js",
+    "index.html": "/Gyalariee/index.html",
+    "main.48616c03.css.map": "/Gyalariee/static/css/main.48616c03.css.map",
+    "main.02c6173f.js.map": "/Gyalariee/static/js/main.02c6173f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.48616c03.css",
+    "static/js/main.02c6173f.js"
+  ]
+}
